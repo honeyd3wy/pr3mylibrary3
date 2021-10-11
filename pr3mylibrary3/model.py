@@ -47,10 +47,6 @@ def export_model(dir= None, dataframe=None, your_name=None, mode=None):
     ## 하이퍼 파라미터 튜닝
     param_tuning = {
     'randomforestclassifier__class_weight' : ['balanced', {0:scale_weight_0, 1:scale_weight_1}],
-    'randomforestclassifier__n_estimators': [10, 50, 100],
-    'randomforestclassifier__max_depth': [1, 5, 10],
-    'randomforestclassifier__min_samples_leaf' : [5, 10, 15],
-    'randomforestclassifier__max_features': [0.3, 0.5, 0.7] # max_features
     }
 
     clf_rf_rmd = GridSearchCV(estimator = clf_rf,
