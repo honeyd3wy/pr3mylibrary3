@@ -16,10 +16,10 @@ import sys
 from pr3mylibrary2.data_handling import Features
 
 
-def export_model(dataframe=None, your_name=None, mode=None):
-    # Path 설정
-    md_dir = str(Path(__file__).parent.parent)
-    ml_dir = str(Path(__file__).parent)
+def export_model(dir= None, dataframe=None, your_name=None, mode=None):
+    # # Path 설정
+    # md_dir = str(Path(__file__).parent.parent)
+    # ml_dir = str(Path(__file__).parent)
 
     # 데이터
     data = dataframe
@@ -62,15 +62,15 @@ def export_model(dataframe=None, your_name=None, mode=None):
 
     ## 리모델링                        
     clf_rf_rmd.fit(X_train, y_train);
-    joblib.dump(clf_rf_rmd, md_dir + f'/my_app/rf_model/rcmd_{your_name}.pkl')
+    joblib.dump(clf_rf_rmd, dir + f'/my_app/rf_model/rcmd_{your_name}.pkl')
 
     # 모델 저장(첫 학습, 재 학습 구분)
     if mode is None: # 모델이 없는 경우
-        joblib.dump(clf_rf_rmd, md_dir + f'/my_app/rf_model/rcmd_{your_name}.pkl')
+        joblib.dump(clf_rf_rmd, dir + f'/my_app/rf_model/rcmd_{your_name}.pkl')
     else: # 모델이 있는 경우
-        if os.path.isfile(md_dir + f'/my_app/rf_model/rcmd_{your_name}.pkl'):
-            os.rename(md_dir + f'/my_app/rf_model/rcmd_{your_name}.pkl', md_dir + f'/my_app/rf_model/rcmd_{your_name}_{time.time()}.pkl')
-        joblib.dump(clf_rf_rmd, md_dir + f'/my_app/rf_model/rcmd_{your_name}.pkl')
+        if os.path.isfile(dir + f'/my_app/rf_model/rcmd_{your_name}.pkl'):
+            os.rename(dir + f'/my_app/rf_model/rcmd_{your_name}.pkl', dir + f'/my_app/rf_model/rcmd_{your_name}_{time.time()}.pkl')
+        joblib.dump(clf_rf_rmd, dir + f'/my_app/rf_model/rcmd_{your_name}.pkl')
 
 if __name__ == "__main__":
     try:
